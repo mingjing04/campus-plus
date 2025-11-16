@@ -1,16 +1,52 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { HiHeart, HiChatBubbleLeft, HiShare, HiBookmark } from 'react-icons/hi2';
 
 export default function PostCard({ id, author, avatar, title, content, loves, comments, timestamp, community, tags = [] }) {
+  const [isLiked, setIsLiked] = useState(false);
+  const [loveCount, setLoveCount] = useState(loves);
+
+  // Load liked state from localStorage on mount
+  useEffect(() => {
+    const liked = localStorage.getItem(`post_${id}_liked`) === 'true';
+    setIsLiked(liked);
+  }, [id]);
+
+  const handleLike = () => {
+    const newLikedState = !isLiked;
+    setIsLiked(newLikedState);
+
+    // Update count
+    if (newLikedState) {
+      setLoveCount(prev => prev + 1);
+    } else {
+      setLoveCount(prev => prev - 1);
+    }
+
+    // Persist to localStorage
+    localStorage.setItem(`post_${id}_liked`, newLikedState.toString());
+  };
+
   return (
     <div className="flex gap-2 rounded-lg border border-gray-200 bg-white p-4 transition-shadow hover:shadow-md dark:border-gray-800 dark:bg-gray-900">
       {/* Left side - Loves */}
       <div className="flex flex-col items-center gap-1">
-        <button className="rounded p-1 text-gray-400 transition-colors hover:bg-gray-100 hover:text-red-500 dark:hover:bg-gray-800">
+        <button
+          onClick={handleLike}
+          className={`rounded p-1 transition-all ${
+            isLiked
+              ? 'text-red-500 hover:text-red-600'
+              : 'text-gray-400 hover:bg-gray-100 hover:text-red-500 dark:hover:bg-gray-800'
+          }`}
+        >
           <HiHeart className="h-6 w-6" />
         </button>
-        <span className="text-sm font-bold text-gray-900 dark:text-white">
-          {loves}
+        <span className={`text-sm font-bold transition-colors ${
+          isLiked ? 'text-red-500' : 'text-gray-900 dark:text-white'
+        }`}>
+          {loveCount}
         </span>
       </div>
 

@@ -18,6 +18,8 @@ export default function PostDetailPage() {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [comments, setComments] = useState([]);
+  const [isLiked, setIsLiked] = useState(false);
+  const [loveCount, setLoveCount] = useState(0);
 
   useEffect(() => {
     checkUser();
@@ -27,6 +29,14 @@ export default function PostDetailPage() {
     // Load comments for this post
     const postComments = mockComments.filter(c => c.postId === postId);
     setComments(postComments);
+
+    // Load like state and count
+    const post = mockPosts.find(p => p.id === postId);
+    if (post) {
+      setLoveCount(post.loves);
+      const liked = localStorage.getItem(`post_${postId}_liked`) === 'true';
+      setIsLiked(liked);
+    }
   }, [postId]);
 
   const checkUser = async () => {
@@ -56,6 +66,21 @@ export default function PostDetailPage() {
     };
 
     setComments([newComment, ...comments]);
+  };
+
+  const handleLike = () => {
+    const newLikedState = !isLiked;
+    setIsLiked(newLikedState);
+
+    // Update count
+    if (newLikedState) {
+      setLoveCount(prev => prev + 1);
+    } else {
+      setLoveCount(prev => prev - 1);
+    }
+
+    // Persist to localStorage
+    localStorage.setItem(`post_${postId}_liked`, newLikedState.toString());
   };
 
   if (loading) {
@@ -147,9 +172,16 @@ export default function PostDetailPage() {
 
           {/* Actions */}
           <div className="mt-6 flex items-center gap-6 border-t border-gray-200 pt-4 dark:border-gray-800">
-            <button className="flex items-center gap-2 text-gray-500 transition-colors hover:text-red-500 dark:text-gray-400">
+            <button
+              onClick={handleLike}
+              className={`flex items-center gap-2 transition-all ${
+                isLiked
+                  ? 'text-red-500 hover:text-red-600'
+                  : 'text-gray-500 hover:text-red-500 dark:text-gray-400'
+              }`}
+            >
               <HiHeart className="h-5 w-5" />
-              <span className="text-sm font-medium">{post.loves} Loves</span>
+              <span className="text-sm font-medium">{loveCount} Loves</span>
             </button>
             <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
               <HiChatBubbleLeft className="h-5 w-5" />
