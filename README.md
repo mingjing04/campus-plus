@@ -68,7 +68,7 @@ Title: "Best resources for design patterns?"
 ###  CORE FEATURES 
 
 #### 1. Basic Account & Onboarding
-- Simple email/username/password sign-up (no verification)
+- Simple email/username/password sign-up 
 
 - User chooses:
   - Faculty
@@ -80,8 +80,8 @@ Title: "Best resources for design patterns?"
 
 ---
 
-#### 2. Pre-Created Communities (Backend Setup)
-- Load public data of all UBC classes (manually)
+#### 2. Pre-Created Communities 
+- Load public data of all UBC classes
 
 - Load faculties
 
@@ -91,13 +91,13 @@ Title: "Best resources for design patterns?"
   - Class communities
   - Faculty communities
   - Major communities
-  - Year-level communities (optional core if you want)
+  - Year-level communities
 
 - Store them empty until users join
 
 ---
 
-#### 3. Community Pages (Core Social Structure)
+#### 3. Community Pages 
 Each community should have:
 - Community page layout
 
@@ -111,7 +111,7 @@ Each community should have:
 
 ---
 
-#### 4. Community Chat (Core Feature)
+#### 4. Community Chat 
 Each community has its own live chat:
 - Real-time messaging
 
@@ -119,11 +119,11 @@ Each community has its own live chat:
 
 - Basic moderation tools (delete their own messages)
 
-- Emoji reactions (optional core)
+- Like reaction
 
 - Channels for:
   - General chat
-  - Course chat (if class community)
+  - Course chat 
 
 ---
 
@@ -144,68 +144,6 @@ Each community has its own live chat:
 
 ---
 
-###  OPTIONAL FEATURES 
-
-#### A. Discovery Enhancements
-- Trending classes
-
-- Suggested communities
-
-- “Popular this week” feed
-
-- People-matching (“Shared 3 classes with you”)
-
----
-
-#### B. Extra Onboarding Tools
-- Quick-add class suggestions
-
-- Import courses from SSC transcript PDF
-
-- Autofill year-to-year recommendations
-
----
-
-#### C. Events & Activities
-- Event card reels
-
-- Course-specific meetups
-
-- Faculty-wide event boards
-
-- Reactions & RSVP system
-
----
-
-#### D. Productivity Tools
-- Focus mode
-
-- Assignment reminders
-
-- Course-notes shared folders
-
-- Study room creation
-
----
-
-#### E. Extra Chat Features
-- DM system
-
-- Voice chat / study rooms
-
-- Group chats separate from communities
-
-- Anonymous chat mode  
-- Like/upvote system
-
----
-
-#### F. Verification Features (Future / Optional)
-- School email domain restrictions
-
-- Email code verification
-
-- Single-sign-on (CWL or OAuth)
 
 
 ## 📁 Project Structure
