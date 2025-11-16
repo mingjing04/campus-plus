@@ -5,10 +5,11 @@ export const mockPosts = [
     avatar: "JD",
     title: "Best study spots on campus?",
     content: "Looking for quiet places to study between classes. The library is always packed. Any hidden gems?",
-    upvotes: 42,
+    loves: 42,
     comments: 15,
     timestamp: "2 hours ago",
-    community: "UBC General"
+    community: "UBC General",
+    tags: ["study", "campus-life"]
   },
   {
     id: 2,
@@ -16,10 +17,11 @@ export const mockPosts = [
     avatar: "JS",
     title: "CPSC 210 midterm tips",
     content: "Anyone else taking CPSC 210 this term? The midterm is next week and I'm struggling with design patterns. Any study group forming?",
-    upvotes: 38,
+    loves: 38,
     comments: 23,
     timestamp: "4 hours ago",
-    community: "Computer Science"
+    community: "CPSC 210",
+    tags: ["study-group", "midterm"]
   },
   {
     id: 3,
@@ -27,10 +29,11 @@ export const mockPosts = [
     avatar: "MC",
     title: "Free pizza at the AMS Nest!",
     content: "Engineering club is giving out free pizza at the Nest until 6pm. First come first serve!",
-    upvotes: 156,
+    loves: 156,
     comments: 42,
     timestamp: "30 minutes ago",
-    community: "Events"
+    community: "Faculty of Engineering",
+    tags: ["food", "events"]
   },
   {
     id: 4,
@@ -38,10 +41,11 @@ export const mockPosts = [
     avatar: "SW",
     title: "Lost wallet near Buchanan",
     content: "Found a brown leather wallet near Buchanan building. Has student ID inside. DM me if it's yours!",
-    upvotes: 89,
+    loves: 89,
     comments: 12,
     timestamp: "1 hour ago",
-    community: "UBC General"
+    community: "UBC General",
+    tags: ["lost-and-found"]
   },
   {
     id: 5,
@@ -49,10 +53,11 @@ export const mockPosts = [
     avatar: "AP",
     title: "Hiking trip this weekend?",
     content: "Planning a hike to Quarry Rock on Saturday. Anyone want to join? Meeting at 9am at the bus loop.",
-    upvotes: 67,
+    loves: 67,
     comments: 28,
     timestamp: "5 hours ago",
-    community: "Social"
+    community: "UBC General",
+    tags: ["social", "outdoors"]
   },
   {
     id: 6,
@@ -60,10 +65,11 @@ export const mockPosts = [
     avatar: "EB",
     title: "Best food trucks near campus",
     content: "New to UBC, what are the must-try food trucks? I've heard good things about the Japanese place.",
-    upvotes: 34,
+    loves: 34,
     comments: 19,
     timestamp: "3 hours ago",
-    community: "Food & Dining"
+    community: "UBC General",
+    tags: ["food", "recommendations"]
   },
   {
     id: 7,
@@ -71,10 +77,11 @@ export const mockPosts = [
     avatar: "DL",
     title: "Looking for basketball players",
     content: "We play pickup basketball every Tuesday and Thursday at 7pm. Need 2 more players for a full game. All skill levels welcome!",
-    upvotes: 45,
+    loves: 45,
     comments: 16,
     timestamp: "6 hours ago",
-    community: "Sports"
+    community: "UBC General",
+    tags: ["sports", "social"]
   },
   {
     id: 8,
@@ -82,10 +89,11 @@ export const mockPosts = [
     avatar: "LT",
     title: "MATH 200 study group",
     content: "Starting a study group for MATH 200. Meeting every Wednesday at 3pm in the math building. Reply if interested!",
-    upvotes: 52,
+    loves: 52,
     comments: 31,
     timestamp: "7 hours ago",
-    community: "Mathematics"
+    community: "MATH 200",
+    tags: ["study-group"]
   },
   {
     id: 9,
@@ -93,10 +101,11 @@ export const mockPosts = [
     avatar: "RK",
     title: "Campus job opportunities",
     content: "The bookstore is hiring! They need 3 part-time positions for the semester. Great for students. Apply at the info desk.",
-    upvotes: 124,
+    loves: 124,
     comments: 38,
     timestamp: "2 hours ago",
-    community: "Jobs & Careers"
+    community: "UBC General",
+    tags: ["jobs", "opportunities"]
   },
   {
     id: 10,
@@ -104,9 +113,10 @@ export const mockPosts = [
     avatar: "OW",
     title: "Mental health resources at UBC",
     content: "Reminder that UBC has free counseling services. You can book online through the health portal. Take care of yourselves!",
-    upvotes: 203,
+    loves: 203,
     comments: 45,
     timestamp: "8 hours ago",
-    community: "Health & Wellness"
+    community: "UBC General",
+    tags: ["wellness", "mental-health"]
   }
 ];

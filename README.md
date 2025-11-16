@@ -31,6 +31,38 @@ Campus+ is a Reddit-like forum platform designed exclusively for university stud
 
 Unlike traditional social media, Campus+ transforms your academic history into meaningful communities organized by courses, events, and shared experiences. Whether you're looking for study partners, event announcements, or just want to connect with classmates, Campus+ brings your campus online.
 
+## 🏛️ Community Structure
+
+Campus+ uses a hierarchical community system to organize content and discussions:
+
+### Main Community
+- **UBC General**: The main community where all students can post and engage
+  - Open to all UBC students
+  - General campus discussions, events, lost & found, etc.
+
+### Faculty Communities
+- Organized by academic faculties (e.g., Science, Arts, Engineering, Commerce)
+- Auto-assigned based on user's faculty during onboarding
+- Faculty-specific events, discussions, and announcements
+
+### Course Communities
+- Individual communities for each course (e.g., CPSC 210, MATH 200, CHEM 121)
+- Auto-assigned when users select their current/past classes
+- Course-specific study groups, exam tips, assignment help
+
+### Hashtag Tags
+- **Not communities**, but topical labels users can add to posts
+- Examples: `#food`, `#social`, `#sports`, `#wellness`, `#jobs`
+- Color-coded and styled differently from community labels
+- Help users find content across all communities by topic
+
+**Post Flow Example:**
+```
+Community: CPSC 210 (Course Community)
+Tags: #study-tips #midterm
+Title: "Best resources for design patterns?"
+```
+
 ## ✨ Features
 
 ###  CORE FEATURES 
