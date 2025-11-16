@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Hero() {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-32">
@@ -14,12 +16,12 @@ export default function Hero() {
           your campus community.
         </p>
         <div className="mt-10 flex items-center justify-center gap-4">
-          <button className="rounded-full bg-ubc-secondary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-ubc-blue hover:shadow-xl">
+          <Link href="/signup" className="rounded-full bg-ubc-secondary px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all hover:bg-ubc-blue hover:shadow-xl">
             Get Started
-          </button>
-          <button className="rounded-full border-2 border-ubc-secondary px-8 py-4 text-lg font-semibold text-ubc-secondary transition-all hover:border-ubc-blue hover:bg-ubc-blue hover:text-white dark:border-ubc-secondary dark:text-ubc-secondary">
+          </Link>
+          <Link href="#features" className="rounded-full border-2 border-ubc-secondary px-8 py-4 text-lg font-semibold text-ubc-secondary transition-all hover:border-ubc-blue hover:bg-ubc-blue hover:text-white dark:border-ubc-secondary dark:text-ubc-secondary">
             Learn More
-          </button>
+          </Link>
         </div>
       </div>
     </section>
