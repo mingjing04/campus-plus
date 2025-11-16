@@ -76,6 +76,7 @@ Unlike traditional social media, Campus+ transforms your academic history into m
 - **ESLint** - Code linting and quality
 - **PostCSS** - CSS processing
 - **Geist Font** - Modern typography
+- **React Icons** - Icon library for UI components
 
 ## 🚀 Getting Started
 
@@ -88,7 +89,7 @@ Unlike traditional social media, Campus+ transforms your academic history into m
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/campus-plus.git
+   git clone https://github.com/mingjing04/campus-plus.git
    cd campus-plus
    ```
 
@@ -136,14 +137,24 @@ npm start
 ```
 campus-plus/
 ├── src/
-│   └── app/
-│       ├── layout.js          # Root layout
-│       ├── page.js            # Home page
-│       └── globals.css        # Global styles
+│   ├── app/
+│   │   ├── layout.js          # Root layout
+│   │   ├── page.js            # Landing page
+│   │   └── globals.css        # Global styles with UBC colors
+│   ├── components/
+│   │   └── landing/           # Landing page components
+│   │       ├── Navbar.js
+│   │       ├── Hero.js
+│   │       ├── FeatureCard.js
+│   │       ├── FeaturesSection.js
+│   │       ├── CTASection.js
+│   │       └── Footer.js
+│   └── data/
+│       └── features.js        # Feature data
 ├── public/                    # Static assets
 ├── .env.local                 # Environment variables (create this)
+├── CLAUDE.md                  # AI development guide
 ├── next.config.mjs            # Next.js configuration
-├── tailwind.config.js         # Tailwind configuration
 └── package.json               # Dependencies
 ```
 
@@ -151,12 +162,13 @@ campus-plus/
 
 ### Phase 1 - Core Features (Hackcamp 2025)
 - [x] Project setup with Next.js and Tailwind
-- [ ] Supabase authentication with email verification
-- [ ] University email domain validation
-- [ ] Basic community creation and management
+- [x] Component-based landing page with UBC branding
+- [x] UBC color system integration
+- [ ] Basic authentication (sign up/login)
+- [ ] Main feed page (Reddit-style)
 - [ ] Post creation (text and media)
-- [ ] Course sections
-- [ ] Event cards/reels feed
+- [ ] Upvote/downvote functionality
+- [ ] Comment system
 
 ### Phase 2 - Enhanced Features
 - [ ] Private communities/subreddits
@@ -206,7 +218,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact
 
-- **Project Link**: [https://github.com/yourusername/campus-plus](https://github.com/yourusername/campus-plus)
+- **Project Link**: [https://github.com/mingjing04/campus-plus](https://github.com/mingjing04/campus-plus)
 - **Demo**: Coming soon!
 
 ---

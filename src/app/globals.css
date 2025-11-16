@@ -3,6 +3,13 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* UBC Brand Colors */
+  --ubc-blue: #002145;
+  --ubc-blue-rgb: 0, 33, 69;
+  --ubc-secondary: #0055B7;
+  --ubc-secondary-rgb: 0, 85, 183;
+  --ubc-white: #ffffff;
 }
 
 @theme inline {
@@ -10,6 +17,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* UBC Colors */
+  --color-ubc-blue: var(--ubc-blue);
+  --color-ubc-secondary: var(--ubc-secondary);
+  --color-ubc-white: var(--ubc-white);
 }
 
 @media (prefers-color-scheme: dark) {
