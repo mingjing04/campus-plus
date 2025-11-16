@@ -20,6 +20,7 @@ export default function PostDetailPage() {
   const [comments, setComments] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
   const [loveCount, setLoveCount] = useState(0);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     checkUser();
@@ -99,7 +100,7 @@ export default function PostDetailPage() {
   if (!post) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-black">
-        <FeedNavbar />
+        <FeedNavbar onSidebarToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
         <main className="mx-auto max-w-4xl px-4 py-6">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Post not found</h1>
@@ -119,7 +120,7 @@ export default function PostDetailPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black">
-      <FeedNavbar />
+      <FeedNavbar onSidebarToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
 
       <main className="mx-auto max-w-4xl px-4 py-6">
         {/* Back button */}

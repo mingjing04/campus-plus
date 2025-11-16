@@ -4,9 +4,9 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { HiMagnifyingGlass, HiArrowRightOnRectangle } from 'react-icons/hi2';
+import { HiMagnifyingGlass, HiArrowRightOnRectangle, HiBars3 } from 'react-icons/hi2';
 
-export default function FeedNavbar() {
+export default function FeedNavbar({ onSidebarToggle }) {
   const router = useRouter();
   const [user, setUser] = useState(null);
 
@@ -45,6 +45,14 @@ export default function FeedNavbar() {
     <nav className="sticky top-0 z-50 border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
+          {/* Hamburger Menu (Mobile Only) */}
+          <button
+            onClick={onSidebarToggle}
+            className="rounded-lg p-2 text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800 md:hidden"
+          >
+            <HiBars3 className="h-6 w-6" />
+          </button>
+
           {/* Logo */}
           <Link href="/feed" className="flex items-center gap-2">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ubc-secondary text-xl font-bold text-white">

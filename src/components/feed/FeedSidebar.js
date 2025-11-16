@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { HiHome, HiChatBubbleLeftRight, HiChevronDown, HiChevronRight } from 'react-icons/hi2';
+import { HiHome, HiChatBubbleLeftRight, HiChevronDown, HiChevronRight, HiXMark } from 'react-icons/hi2';
 import { mainCommunity, faculties, getDepartmentsByFaculty, getCoursesByDepartment, getCourseLevels } from '@/data/communities';
 
-export default function FeedSidebar() {
+export default function FeedSidebar({ isOpen = false, onClose = () => {} }) {
   const [expandedFaculties, setExpandedFaculties] = useState({});
   const [expandedDepartments, setExpandedDepartments] = useState({});
 
@@ -24,8 +24,33 @@ export default function FeedSidebar() {
   };
 
   return (
-    <aside className="sticky top-16 w-64 border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 h-[calc(100vh-4rem)] overflow-y-auto">
-      <div className="p-4">
+    <>
+      {/* Mobile Backdrop */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/50 md:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside className={`
+        sticky top-16 w-64 border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 h-[calc(100vh-4rem)] overflow-y-auto
+        md:block
+        ${isOpen ? 'fixed inset-y-0 left-0 z-50' : 'hidden'}
+      `}>
+        {/* Mobile Close Button */}
+        <div className="flex items-center justify-between border-b border-gray-200 p-4 dark:border-gray-800 md:hidden">
+          <span className="text-lg font-bold text-gray-900 dark:text-white">Menu</span>
+          <button
+            onClick={onClose}
+            className="rounded-lg p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <HiXMark className="h-6 w-6" />
+          </button>
+        </div>
+
+        <div className="p-4">
         {/* Navigation Buttons */}
         <div className="space-y-1 mb-6">
           <Link href="/feed">
@@ -168,6 +193,7 @@ export default function FeedSidebar() {
         </div>
       </div>
     </aside>
+    </>
   );
 }
 

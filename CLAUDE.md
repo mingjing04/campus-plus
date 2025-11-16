@@ -166,3 +166,87 @@ src/app/
 - Users can join multiple universities if verified with multiple emails
 - No existing auth, database, or API layer yet - start from scratch for backend
 - Keep dependencies minimal unless absolutely necessary
+
+---
+
+## Feature Plans
+
+### Sidebar Improvements (Current Task)
+
+#### Issues to Fix:
+1. Sidebar doesn't extend to bottom of screen
+2. Sidebar not responsive - needs to collapse on mobile
+
+#### Implementation Plan:
+
+**1. Full Height Sidebar**
+- Change sidebar container to use `min-h-screen` or fixed height with scrollable content
+- Ensure sidebar extends to bottom on all screen sizes
+- Make sidebar content scrollable if taller than viewport
+
+**2. Mobile Responsiveness**
+- Hide sidebar by default on mobile (< md breakpoint, 768px)
+- Add hamburger menu button in navbar for mobile
+- Implement slide-in drawer animation for mobile sidebar
+- Add overlay/backdrop when sidebar is open on mobile
+- Click outside or close button to dismiss sidebar
+
+**3. Technical Approach:**
+- Add state management for mobile sidebar open/close (useState)
+- Use Tailwind responsive classes: `hidden md:block` for sidebar
+- Add transition animations for smooth drawer open/close
+- Lift state to parent component or use React Context if needed
+
+**4. Files to Modify:**
+- `src/components/feed/FeedSidebar.js` - make full height, add responsive classes
+- `src/components/feed/FeedNavbar.js` - add hamburger menu button
+- Parent pages (feed, community, post detail) - manage mobile sidebar state
+
+**5. Responsive Behavior:**
+- **Mobile** (< 768px): Hidden by default, opens as drawer overlay
+- **Tablet/Desktop** (>= 768px): Always visible, full height sticky sidebar
+
+---
+
+### DM Feature Implementation Plan (Future)
+
+#### 1. Database Schema (Supabase)
+**conversations table:**
+- id (uuid, primary key)
+- participant1_id (uuid, user reference)
+- participant2_id (uuid, user reference)
+- last_message_at (timestamp)
+- created_at (timestamp)
+
+**messages table:**
+- id (uuid, primary key)
+- conversation_id (uuid, foreign key)
+- sender_id (uuid, user reference)
+- content (text)
+- created_at (timestamp)
+- read (boolean, default false)
+
+#### 2. UI Components Structure
+- **Inbox Page** (`/app/messages/page.js`): List of conversations with last message preview, unread indicators
+- **Conversation Page** (`/app/messages/[conversationId]/page.js`): Chat interface with message thread
+- **New Message Modal**: Search users and start new conversation
+
+#### 3. Mock Data (for demo)
+- `mockConversations.js` - conversation list with participants
+- `mockMessages.js` - message history for each conversation
+- Use localStorage for demo message sending
+
+#### 4. Implementation Order
+1. Create mock data for conversations and messages
+2. Build Messages inbox page with conversation list
+3. Build individual conversation page with chat interface
+4. Add message input and send functionality (localStorage)
+5. Add "New Message" button and user search
+6. Integrate into navbar with messaging icon
+7. Add unread count badge
+
+#### 5. Future Enhancements
+- Supabase Realtime for instant updates
+- Image/file attachments
+- Message reactions
+- Typing indicators

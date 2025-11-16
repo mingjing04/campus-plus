@@ -11,6 +11,7 @@ import { mockPosts } from '@/data/mockPosts';
 export default function FeedPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     checkUser();
@@ -40,11 +41,14 @@ export default function FeedPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black">
-      <FeedNavbar />
+      <FeedNavbar onSidebarToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
 
       <div className="flex">
         {/* Sidebar */}
-        <FeedSidebar />
+        <FeedSidebar
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
 
         {/* Main Content */}
         <main className="flex-1 px-4 py-6">

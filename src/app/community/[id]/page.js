@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import FeedNavbar from '@/components/feed/FeedNavbar';
 import FeedSidebar from '@/components/feed/FeedSidebar';
@@ -10,6 +11,7 @@ import { mainCommunity, faculties, departments, courses } from '@/data/communiti
 export default function CommunityPage() {
   const params = useParams();
   const communityId = params.id;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Find the community data
   let community = null;
@@ -39,9 +41,12 @@ export default function CommunityPage() {
   if (!community) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-black">
-        <FeedNavbar />
+        <FeedNavbar onSidebarToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
         <div className="flex">
-          <FeedSidebar />
+          <FeedSidebar
+            isOpen={isSidebarOpen}
+            onClose={() => setIsSidebarOpen(false)}
+          />
           <main className="flex-1 px-4 py-6">
             <div className="mx-auto max-w-3xl">
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -56,11 +61,14 @@ export default function CommunityPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-black">
-      <FeedNavbar />
+      <FeedNavbar onSidebarToggle={() => setIsSidebarOpen(!isSidebarOpen)} />
 
       <div className="flex">
         {/* Sidebar */}
-        <FeedSidebar />
+        <FeedSidebar
+          isOpen={isSidebarOpen}
+          onClose={() => setIsSidebarOpen(false)}
+        />
 
         {/* Main Content */}
         <main className="flex-1 px-4 py-6">
