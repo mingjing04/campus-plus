@@ -4,11 +4,12 @@
   <p>A university-focused social platform that unites students and fosters connections beyond the classroom</p>
 
   <p>
-    <a href="#features">Features</a> •
-    <a href="#tech-stack">Tech Stack</a> •
-    <a href="#getting-started">Getting Started</a> •
-    <a href="#roadmap">Roadmap</a> •
-    <a href="#contributing">Contributing</a>
+    <a href="#-about">About</a> •
+    <a href="#️-tech-stack">Tech Stack</a> •
+    <a href="#-getting-started">Getting Started</a> •
+    <a href="#-features">Features</a> •
+    <a href="#-project-structure">Project Structure</a> •
+    <a href="#️-roadmap">Roadmap</a>
   </p>
 
   <p>
@@ -63,86 +64,143 @@ Tags: #study-tips #midterm
 Title: "Best resources for design patterns?"
 ```
 
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
+- **React**: Version 19.2 with Server Components
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) (beta)
+- **Authentication**: [Supabase Auth](https://supabase.com/auth) with Google OAuth
+- **Backend**: Supabase (configured, currently using mock data)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Heroicons 2)
+- **Language**: JavaScript (ES6+)
+- **Deployment**: Vercel-ready
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/mingjing04/campus-plus.git
+   cd campus-plus
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Set up environment variables**
+
+   Create a `.env.local` file in the root directory:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+
+   Navigate to [http://localhost:3000](http://localhost:3000)
+
+### Demo Mode
+You can use **Guest Mode** on the login/signup pages to explore the app without creating an account!
+
 ## ✨ Features
 
-###  CORE FEATURES 
+### 🎯 IMPLEMENTED FEATURES
 
-#### 1. Basic Account & Onboarding
-- Simple email/username/password sign-up 
+#### ✅ Authentication & Onboarding
+- Email/password signup and login
+- Google OAuth integration
+- Guest/demo mode for testing
+- User session management
 
-- User chooses:
-  - Faculty
-  - Major
-  - Current classes
-  - Past classes
+#### ✅ Main Feed
+- Reddit-style post feed
+- Community filtering (UBC General, faculties, courses)
+- Hierarchical community structure
+- Post cards with author info, timestamps, and engagement metrics
+- Responsive design with mobile sidebar
 
-- Auto-assign to corresponding communities based on selections
+#### ✅ Posts & Engagement
+- Create posts (text content)
+- Like/unlike functionality
+- View individual post details
+- Community labels and tags
+- Anonymous posting support
 
----
+#### ✅ Comments System
+- Threaded comments with replies
+- Nested comment display
+- Like comments
+- Reply to any comment
+- Real-time comment count updates
 
-#### 2. Pre-Created Communities 
-- Load public data of all UBC classes
+#### ✅ Direct Messaging
+- Private conversations between users
+- Real-time message interface
+- Conversation list with previews
+- Start new conversations
+- Message timestamps
 
-- Load faculties
+#### ✅ Community Pages
+- Dynamic routing per community
+- Course-level communities (e.g., CPSC 210, MATH 200)
+- Faculty-level communities
+- Department filtering
+- Member count display
 
-- Load majors
+#### ✅ UI/UX Components
+- Reusable Logo component with flexible sizing
+- Sticky navigation bar
+- Collapsible sidebar with mobile hamburger menu
+- Active navigation state indicators
+- Dark mode support (theme-aware)
+- UBC brand colors throughout
 
-- Automatically generate:
-  - Class communities
-  - Faculty communities
-  - Major communities
-  - Year-level communities
+### 📋 PLANNED FEATURES (Next Steps)
 
-- Store them empty until users join
+#### Image & Media Support
+- Image uploads for posts
+- File attachments (PDFs, documents)
+- Media gallery view
+- Image compression and optimization
 
----
+#### Community Chat Rooms
+- Real-time chat for each community
+- Member list and online status
+- Message reactions and threading
+- Moderation tools (delete, pin messages)
 
-#### 3. Community Pages 
-Each community should have:
-- Community page layout
+#### User Profiles & Reputation
+- Public user profiles
+- Post/comment history
+- Karma/reputation system
+- Achievement badges
+- Customizable avatars
 
-- Members auto-populate when they select that class/major/faculty
+#### Enhanced Onboarding
+- Multi-step onboarding flow
+- Select current/past classes
+- Choose faculty and major
+- Auto-join relevant communities
+- Import schedule from university systems
 
-- Posts feed (Reddit-like)
-
-- Comments + replies
-
-- Ability to post normally or anonymously
-
----
-
-#### 4. Community Chat 
-Each community has its own live chat:
-- Real-time messaging
-
-- Member list
-
-- Basic moderation tools (delete their own messages)
-
-- Like reaction
-
-- Channels for:
-  - General chat
-  - Course chat 
-
----
-
-#### 5. UI
-- Sidebar or tabs for:
-  - Classes
-  - Majors
-  - Faculties
-
-- Home feed (posts from all joined communities)
-
-- Community search bar
-
-- Profile page with:
-  - Classes selected
-  - Faculty + major
-  - Communities joined
-
----
+#### Moderation Tools
+- Report posts/comments/users
+- Community moderator roles
+- Content filtering
+- Ban/mute functionality
+- Moderation queue
 
 
 
@@ -152,53 +210,104 @@ Each community has its own live chat:
 campus-plus/
 ├── src/
 │   ├── app/
-│   │   ├── layout.js          # Root layout
-│   │   ├── page.js            # Landing page
-│   │   └── globals.css        # Global styles with UBC colors
+│   │   ├── layout.js                      # Root layout with font config
+│   │   ├── page.js                        # Landing page
+│   │   ├── globals.css                    # Global styles + UBC colors
+│   │   ├── feed/page.js                   # Main feed page
+│   │   ├── post/[id]/page.js              # Individual post view
+│   │   ├── comment/[id]/page.js           # Comment detail view
+│   │   ├── community/[id]/page.js         # Community pages
+│   │   ├── login/page.js                  # Login page
+│   │   ├── signup/page.js                 # Signup page
+│   │   └── messages/
+│   │       ├── page.js                    # Messages inbox
+│   │       ├── [conversationId]/page.js   # Conversation view
+│   │       └── new/page.js                # Start new conversation
 │   ├── components/
-│   │   └── landing/           # Landing page components
-│   │       ├── Navbar.js
-│   │       ├── Hero.js
-│   │       ├── FeatureCard.js
-│   │       ├── FeaturesSection.js
-│   │       ├── CTASection.js
-│   │       └── Footer.js
-│   └── data/
-│       └── features.js        # Feature data
-├── public/                    # Static assets
-├── .env.local                 # Environment variables (create this)
-├── CLAUDE.md                  # AI development guide
-├── next.config.mjs            # Next.js configuration
-└── package.json               # Dependencies
+│   │   ├── Logo.js                        # Reusable logo component
+│   │   ├── landing/                       # Landing page components
+│   │   │   ├── Navbar.js
+│   │   │   ├── Hero.js
+│   │   │   ├── FeatureCard.js
+│   │   │   ├── FeaturesSection.js
+│   │   │   ├── CTASection.js
+│   │   │   └── Footer.js
+│   │   ├── feed/                          # Feed-related components
+│   │   │   ├── FeedNavbar.js              # Main navigation
+│   │   │   ├── FeedSidebar.js             # Community sidebar
+│   │   │   ├── PostCard.js                # Post display
+│   │   │   ├── CommentCard.js             # Comment display
+│   │   │   └── CommentForm.js             # Comment input
+│   │   └── messages/                      # Messaging components
+│   │       ├── ConversationListItem.js
+│   │       ├── MessageBubble.js
+│   │       └── MessageInput.js
+│   ├── data/                              # Mock data (temporary)
+│   │   ├── features.js                    # Landing features
+│   │   ├── communities.js                 # Community hierarchy
+│   │   ├── mockPosts.js                   # Sample posts
+│   │   ├── mockComments.js                # Sample comments
+│   │   ├── mockUsers.js                   # Sample users
+│   │   ├── mockConversations.js           # Sample conversations
+│   │   └── mockMessages.js                # Sample messages
+│   └── lib/
+│       └── supabase.js                    # Supabase client config
+├── public/
+│   └── CampusPlus_chonky.svg              # Brand logo
+├── .env.local                             # Environment variables
+├── CLAUDE.md                              # AI development guide
+├── next.config.mjs                        # Next.js configuration
+└── package.json                           # Dependencies
 ```
+
+> **Note**: Currently using mock data for development. Database integration in progress.
 
 ## 🗺️ Roadmap
 
-### Phase 1 - Core Features (Hackcamp 2025)
-- [x] Project setup with Next.js and Tailwind
+### Phase 1 - Core Features ✅ **COMPLETED**
+- [x] Project setup with Next.js 16 and Tailwind CSS v4
 - [x] Component-based landing page with UBC branding
 - [x] UBC color system integration
-- [ ] Basic authentication (sign up/login)
-- [ ] Main feed page (Reddit-style)
-- [ ] Post creation (text and media)
-- [ ] Upvote/downvote functionality
-- [ ] Comment system
+- [x] Reusable Logo component with flexible sizing
+- [x] Authentication (email/password + Google OAuth + guest mode)
+- [x] Main feed page (Reddit-style with filtering)
+- [x] Post creation (text content)
+- [x] Like/unlike functionality (upvote/downvote)
+- [x] Comment system with threading and replies
+- [x] Community pages (faculties, departments, courses)
+- [x] Direct messaging system
+- [x] Mobile-responsive sidebar with hamburger menu
 
-### Phase 2 - Enhanced Features
-- [ ] Private communities/subreddits
+### Phase 2 - Database & Backend 🚧 **IN PROGRESS**
+- [x] Supabase client configuration
+- [ ] Replace mock data with Supabase database
+- [ ] User profile storage and retrieval
+- [ ] Post persistence to database
+- [ ] Comment persistence to database
+- [ ] Message persistence with real-time updates
+- [ ] Image upload for posts
+- [ ] Community membership tracking
+
+### Phase 3 - Enhanced Features 📋 **PLANNED**
+- [ ] User onboarding flow (select classes/faculty/major)
+- [ ] Private communities
 - [ ] Assignment reminder system
 - [ ] Focus mode for study periods
-- [ ] Comment system with threading
-- [ ] Upvote/downvote functionality
-- [ ] User profiles
-
-### Phase 3 - Advanced Features
-- [ ] Cross-platform post sharing (Facebook, Instagram)
-- [ ] Real-time notifications
-- [ ] Direct messaging
 - [ ] Advanced search and filtering
+- [ ] Real-time notifications
 - [ ] Community moderation tools
+- [ ] User karma/reputation system
+- [ ] Post scheduling
+- [ ] Media attachments (images, files)
+
+### Phase 4 - Advanced Features 🔮 **FUTURE**
+- [ ] Cross-platform post sharing (Facebook, Instagram)
 - [ ] Analytics dashboard
+- [ ] Community chat rooms
+- [ ] Live events/streaming
+- [ ] Mobile app (React Native)
+- [ ] Multi-university support
+- [ ] Email verification for university domains
 
 ## 🤝 Contributing
 
