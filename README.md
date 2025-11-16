@@ -33,104 +33,148 @@ Unlike traditional social media, Campus+ transforms your academic history into m
 
 ## ✨ Features
 
-### 🏛️ University Communities
-- **Isolated University Spaces** - Each university has its own separate community
-- **Multi-University Access** - Verify with student email to join multiple universities
-- **Email Verification** - Secure authentication using university email domains
+###  CORE FEATURES 
 
-### 💬 Reddit-Style Forums
-- **Communities (Subreddits)** - Create and join topic-based communities
-- **Public & Private Communities** - Control who can see and join your communities
-- **Course Sections** - Dedicated discussion spaces for each course
-- **Posts & Short Reels** - Share content in various formats
+#### 1. Basic Account & Onboarding
+- Simple email/username/password sign-up (no verification)
 
-### 📚 Academic Tools
-- **Assignment Reminders** - Never miss a deadline with built-in reminder system
-- **Course Organization** - Keep track of all your courses in one place
-- **Focus Mode** - Optional distraction-free mode for intense study periods
+- User chooses:
+  - Faculty
+  - Major
+  - Current classes
+  - Past classes
 
-### 🎉 Events & Engagement
-- **Event Sections** - Discover and share campus events
-- **Event Cards/Reels** - Visual event announcements in feed format
-- **Cross-Platform Sharing** - Cross-post from Facebook and Instagram
+- Auto-assign to corresponding communities based on selections
 
-### 🎯 Community Engagement
-- **Upvoting & Discussions** - Reddit-style voting and threaded comments
-- **Community Moderation** - Tools to keep communities safe and relevant
-- **Real-time Updates** - Stay connected with instant notifications
+---
 
-## 🛠️ Tech Stack
+#### 2. Pre-Created Communities (Backend Setup)
+- Load public data of all UBC classes (manually)
 
-### Frontend
-- **[Next.js 16](https://nextjs.org/)** - React framework with App Router
-- **[React 19](https://react.dev/)** - UI library with latest features
-- **[Tailwind CSS 4](https://tailwindcss.com/)** - Utility-first styling
+- Load faculties
 
-### Backend & Services
-- **[Supabase](https://supabase.com/)** - Authentication and backend services
-  - User authentication with university email verification
-  - Database (planned)
-  - Real-time subscriptions (planned)
+- Load majors
 
-### Development Tools
-- **ESLint** - Code linting and quality
-- **PostCSS** - CSS processing
-- **Geist Font** - Modern typography
-- **React Icons** - Icon library for UI components
+- Automatically generate:
+  - Class communities
+  - Faculty communities
+  - Major communities
+  - Year-level communities (optional core if you want)
 
-## 🚀 Getting Started
+- Store them empty until users join
 
-### Prerequisites
-- **Node.js** 18.x or higher
-- **npm**, **yarn**, **pnpm**, or **bun**
-- **Supabase Account** (free tier works great)
+---
 
-### Installation
+#### 3. Community Pages (Core Social Structure)
+Each community should have:
+- Community page layout
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/mingjing04/campus-plus.git
-   cd campus-plus
-   ```
+- Members auto-populate when they select that class/major/faculty
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   # or
-   pnpm install
-   ```
+- Posts feed (Reddit-like)
 
-3. **Set up environment variables**
+- Comments + replies
 
-   Create a `.env.local` file in the root directory:
-   ```env
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
+- Ability to post normally or anonymously
 
-   > Get these from your [Supabase Dashboard](https://app.supabase.com/) → Project Settings → API
+---
 
-4. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-   ```
+#### 4. Community Chat (Core Feature)
+Each community has its own live chat:
+- Real-time messaging
 
-5. **Open your browser**
+- Member list
 
-   Navigate to [http://localhost:3000](http://localhost:3000)
+- Basic moderation tools (delete their own messages)
 
-### Building for Production
+- Emoji reactions (optional core)
 
-```bash
-npm run build
-npm start
-```
+- Channels for:
+  - General chat
+  - Course chat (if class community)
+
+---
+
+#### 5. UI
+- Sidebar or tabs for:
+  - Classes
+  - Majors
+  - Faculties
+
+- Home feed (posts from all joined communities)
+
+- Community search bar
+
+- Profile page with:
+  - Classes selected
+  - Faculty + major
+  - Communities joined
+
+---
+
+###  OPTIONAL FEATURES 
+
+#### A. Discovery Enhancements
+- Trending classes
+
+- Suggested communities
+
+- “Popular this week” feed
+
+- People-matching (“Shared 3 classes with you”)
+
+---
+
+#### B. Extra Onboarding Tools
+- Quick-add class suggestions
+
+- Import courses from SSC transcript PDF
+
+- Autofill year-to-year recommendations
+
+---
+
+#### C. Events & Activities
+- Event card reels
+
+- Course-specific meetups
+
+- Faculty-wide event boards
+
+- Reactions & RSVP system
+
+---
+
+#### D. Productivity Tools
+- Focus mode
+
+- Assignment reminders
+
+- Course-notes shared folders
+
+- Study room creation
+
+---
+
+#### E. Extra Chat Features
+- DM system
+
+- Voice chat / study rooms
+
+- Group chats separate from communities
+
+- Anonymous chat mode  
+- Like/upvote system
+
+---
+
+#### F. Verification Features (Future / Optional)
+- School email domain restrictions
+
+- Email code verification
+
+- Single-sign-on (CWL or OAuth)
+
 
 ## 📁 Project Structure
 
