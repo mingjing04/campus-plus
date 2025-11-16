@@ -1,13 +1,19 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { HiHome, HiChatBubbleLeftRight, HiChevronDown, HiChevronRight, HiXMark } from 'react-icons/hi2';
 import { mainCommunity, faculties, getDepartmentsByFaculty, getCoursesByDepartment, getCourseLevels } from '@/data/communities';
 
 export default function FeedSidebar({ isOpen = false, onClose = () => {} }) {
+  const pathname = usePathname();
   const [expandedFaculties, setExpandedFaculties] = useState({});
   const [expandedDepartments, setExpandedDepartments] = useState({});
+
+  // Check if current page is home/feed related
+  const isHomeActive = pathname === '/feed' || pathname.startsWith('/community') || pathname.startsWith('/post');
+  const isMessagesActive = pathname.startsWith('/messages');
 
   const toggleFaculty = (facultyId) => {
     setExpandedFaculties(prev => ({
@@ -52,15 +58,23 @@ export default function FeedSidebar({ isOpen = false, onClose = () => {} }) {
 
         <div className="p-4">
         {/* Navigation Buttons */}
-        <div className="space-y-1 mb-6">
-          <Link href="/feed">
-            <button className="flex w-full items-center gap-3 rounded-lg bg-ubc-secondary/10 px-4 py-3 text-left font-medium text-ubc-secondary transition-colors hover:bg-ubc-secondary/20">
+        <div className="mb-6">
+          <Link href="/feed" className="block mb-3">
+            <button className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium transition-colors ${
+              isHomeActive
+                ? 'bg-ubc-secondary/10 text-ubc-secondary hover:bg-ubc-secondary/20'
+                : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+            }`}>
               <HiHome className="h-5 w-5" />
               <span>Home</span>
             </button>
           </Link>
-          <Link href="/messages">
-            <button className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
+          <Link href="/messages" className="block">
+            <button className={`flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium transition-colors ${
+              isMessagesActive
+                ? 'bg-ubc-secondary/10 text-ubc-secondary hover:bg-ubc-secondary/20'
+                : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+            }`}>
               <HiChatBubbleLeftRight className="h-5 w-5" />
               <span>Messages</span>
             </button>

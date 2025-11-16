@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
+import Logo from '@/components/Logo';
 import { HiMagnifyingGlass, HiArrowRightOnRectangle, HiBars3 } from 'react-icons/hi2';
 
 export default function FeedNavbar({ onSidebarToggle }) {
@@ -54,14 +56,7 @@ export default function FeedNavbar({ onSidebarToggle }) {
           </button>
 
           {/* Logo */}
-          <Link href="/feed" className="flex items-center gap-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-ubc-secondary text-xl font-bold text-white">
-              C+
-            </div>
-            <span className="hidden text-xl font-bold text-gray-900 dark:text-white sm:block">
-              Campus+
-            </span>
-          </Link>
+          <Logo href="/feed" size="md" textClassName="hidden sm:block" />
 
           {/* Search Bar */}
           <div className="flex flex-1 max-w-2xl">

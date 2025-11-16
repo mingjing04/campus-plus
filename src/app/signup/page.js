@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -54,8 +55,8 @@ export default function SignupPage() {
       <div className="w-full max-w-md space-y-8 px-4">
         {/* Logo */}
         <div className="text-center">
-          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-lg bg-ubc-secondary text-2xl font-bold text-white">
-            C+
+          <div className="mx-auto flex items-center justify-center">
+            <Logo href={null} size="lg" showText={false} />
           </div>
           <h2 className="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
             Create your account
