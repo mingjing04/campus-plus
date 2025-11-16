@@ -24,7 +24,7 @@ export default function FeedSidebar() {
   };
 
   return (
-    <aside className="w-64 border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 h-[calc(100vh-4rem)] overflow-y-auto">
+    <aside className="sticky top-16 w-64 border-r border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-900 h-[calc(100vh-4rem)] overflow-y-auto">
       <div className="p-4">
         {/* Navigation Buttons */}
         <div className="space-y-1 mb-6">
