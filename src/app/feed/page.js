@@ -18,8 +18,9 @@ export default function FeedPage() {
 
   const checkUser = async () => {
     const { data: { session } } = await supabase.auth.getSession();
+    const isGuest = localStorage.getItem('guestMode') === 'true';
 
-    if (!session) {
+    if (!session && !isGuest) {
       router.push('/login');
     } else {
       setLoading(false);

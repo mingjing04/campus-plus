@@ -122,6 +122,30 @@ export default function SignupPage() {
             {loading ? 'Creating account...' : 'Sign up'}
           </button>
 
+          {/* Divider */}
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="bg-gradient-to-b from-blue-50 to-white px-2 text-gray-500 dark:from-gray-900 dark:to-black dark:text-gray-400">
+                OR
+              </span>
+            </div>
+          </div>
+
+          {/* Guest Mode Button */}
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.setItem('guestMode', 'true');
+              router.push('/feed');
+            }}
+            className="w-full rounded-lg border-2 border-gray-300 px-4 py-3 font-semibold text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-800"
+          >
+            Continue as Guest (Demo)
+          </button>
+
           <p className="text-center text-sm text-gray-600 dark:text-gray-400">
             Already have an account?{' '}
             <Link href="/login" className="font-medium text-ubc-secondary hover:text-ubc-blue">

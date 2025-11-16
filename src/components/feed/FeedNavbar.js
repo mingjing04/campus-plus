@@ -15,13 +15,30 @@ export default function FeedNavbar() {
   }, []);
 
   const getUser = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    setUser(user);
+    const isGuest = localStorage.getItem('guestMode') === 'true';
+
+    if (isGuest) {
+      // Mock guest user
+      setUser({
+        email: 'guest@demo.com',
+        user_metadata: { username: 'Guest' }
+      });
+    } else {
+      const { data: { user } } = await supabase.auth.getUser();
+      setUser(user);
+    }
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    router.push('/');
+    const isGuest = localStorage.getItem('guestMode') === 'true';
+
+    if (isGuest) {
+      localStorage.removeItem('guestMode');
+      router.push('/');
+    } else {
+      await supabase.auth.signOut();
+      router.push('/');
+    }
   };
 
   return (
