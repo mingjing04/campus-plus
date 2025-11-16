@@ -9,6 +9,7 @@ export const mockPosts = [
     comments: 15,
     timestamp: "2 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["study", "campus-life"]
   },
   {
@@ -21,6 +22,7 @@ export const mockPosts = [
     comments: 23,
     timestamp: "4 hours ago",
     community: "CPSC 210",
+    communityId: "cpsc-210",
     tags: ["study-group", "midterm"]
   },
   {
@@ -32,7 +34,8 @@ export const mockPosts = [
     loves: 156,
     comments: 42,
     timestamp: "30 minutes ago",
-    community: "Faculty of Engineering",
+    community: "Faculty of Applied Science",
+    communityId: "faculty-applied-science",
     tags: ["food", "events"]
   },
   {
@@ -45,6 +48,7 @@ export const mockPosts = [
     comments: 12,
     timestamp: "1 hour ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["lost-and-found"]
   },
   {
@@ -57,6 +61,7 @@ export const mockPosts = [
     comments: 28,
     timestamp: "5 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["social", "outdoors"]
   },
   {
@@ -69,6 +74,7 @@ export const mockPosts = [
     comments: 19,
     timestamp: "3 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["food", "recommendations"]
   },
   {
@@ -81,6 +87,7 @@ export const mockPosts = [
     comments: 16,
     timestamp: "6 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["sports", "social"]
   },
   {
@@ -93,6 +100,7 @@ export const mockPosts = [
     comments: 31,
     timestamp: "7 hours ago",
     community: "MATH 200",
+    communityId: "math-200",
     tags: ["study-group"]
   },
   {
@@ -105,6 +113,7 @@ export const mockPosts = [
     comments: 38,
     timestamp: "2 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["jobs", "opportunities"]
   },
   {
@@ -117,6 +126,7 @@ export const mockPosts = [
     comments: 45,
     timestamp: "8 hours ago",
     community: "UBC General",
+    communityId: "ubc-general",
     tags: ["wellness", "mental-health"]
   }
 ];
