@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Campus+ is a Hackcamp 2025 hackathon project - a Reddit-like forum platform for university students. Each university operates as an isolated community where students connect through courses, events, and shared experiences using university email verification.
 
-**Current Status**: Fresh Next.js starter template. Core features are planned but not yet implemented.
+**Current Status**: Landing page complete with component-based architecture and UBC branding. Auth and main feed are next priorities.
 
 ## Development Commands
 
@@ -34,9 +34,13 @@ npm run lint         # Run ESLint
 ### Styling System
 - **Tailwind CSS v4** (beta) via PostCSS
 - Utility-first approach - no component libraries
-- Theme via CSS variables in `src/app/globals.css`:
-  - `--background`, `--foreground` (light/dark mode support)
-  - `--font-sans`, `--font-mono` (Geist fonts from Google)
+- **UBC Brand Colors** defined in `src/app/globals.css`:
+  - `--ubc-blue`: #002145 (primary)
+  - `--ubc-secondary`: #0055B7
+  - Use via Tailwind: `bg-ubc-blue`, `bg-ubc-secondary`, `text-ubc-secondary`
+  - Opacity variants: `bg-ubc-secondary/10`
+- Theme variables: `--background`, `--foreground` (light/dark mode)
+- Fonts: `--font-sans`, `--font-mono` (Geist from Google)
 - Use `dark:` prefix for dark mode styles
 
 ### Import Path Aliases
@@ -73,20 +77,33 @@ Key entities for the Reddit-like platform:
 - **Assignments** - Reminder system for deadlines
 - **Users** - Profiles with university affiliations
 
-### Future Directory Structure
-When implementing features, follow this pattern:
+### Current Directory Structure
 ```
 src/
 ├── app/
-│   ├── api/              # Backend API routes
-│   ├── (auth)/           # Auth-related pages
-│   ├── (dashboard)/      # Protected routes
-│   └── ...
-├── components/           # Reusable UI components
-├── lib/                  # Utilities and helpers
-│   ├── supabase.js      # Supabase client
-│   └── utils.js         # Common utilities
-└── hooks/               # Custom React hooks
+│   ├── layout.js         # Root layout
+│   ├── page.js           # Landing page (composes components)
+│   └── globals.css       # Global styles + UBC colors
+├── components/
+│   └── landing/          # Landing page components
+│       ├── Navbar.js
+│       ├── Hero.js
+│       ├── FeatureCard.js (uses react-icons)
+│       ├── FeaturesSection.js
+│       ├── CTASection.js
+│       └── Footer.js
+├── data/
+│   └── features.js       # Features data array
+└── lib/                  # (To be created for Supabase, utils)
+```
+
+### Future Structure (As Features Are Built)
+```
+src/app/
+├── api/                  # Backend API routes
+├── (auth)/               # Auth pages (signup, login)
+├── feed/                 # Main feed page
+└── post/[id]/            # Single post view
 ```
 
 ## Key Development Patterns
@@ -101,8 +118,12 @@ src/
 ### Component Patterns
 - Server Components by default (better performance)
 - Add `'use client'` only when using hooks, event handlers, or browser APIs
+- **Component organization**: Group by feature in subdirectories (e.g., `components/landing/`)
+- **Data-driven components**: Use data files (e.g., `data/features.js`) + `.map()` for lists
+- **React Icons**: Import from `react-icons/hi2` (Heroicons 2)
 - Use Next.js `<Image>` for optimized images
 - Responsive design with Tailwind breakpoints (`sm:`, `md:`, `lg:`, etc.)
+- **UBC Colors**: Use `bg-ubc-secondary`, `bg-ubc-blue`, `text-ubc-secondary` classes
 
 ### Code Style
 - ESLint config extends `next/core-web-vitals`
@@ -113,12 +134,14 @@ src/
 
 ### Phase 1 - Core Features (Current Sprint)
 - [x] Project setup
-- [ ] Supabase auth with email verification
-- [ ] University email domain validation
-- [ ] Community creation and management
+- [x] Landing page with component architecture
+- [x] UBC color system integration
+- [x] React Icons integration
+- [ ] Basic auth (signup/login - no email verification for MVP)
+- [ ] Main feed page (Reddit-style)
 - [ ] Post creation (text/media)
-- [ ] Course sections
-- [ ] Event cards/reels feed
+- [ ] Upvote/downvote functionality
+- [ ] Comment system
 
 ### Phase 2 - Enhanced Features
 - [ ] Private communities
