@@ -59,10 +59,12 @@ export default function FeedSidebar({ isOpen = false, onClose = () => {} }) {
               <span>Home</span>
             </button>
           </Link>
-          <button className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
-            <HiChatBubbleLeftRight className="h-5 w-5" />
-            <span>Messages</span>
-          </button>
+          <Link href="/messages">
+            <button className="flex w-full items-center gap-3 rounded-lg px-4 py-3 text-left font-medium text-gray-700 transition-colors hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800">
+              <HiChatBubbleLeftRight className="h-5 w-5" />
+              <span>Messages</span>
+            </button>
+          </Link>
         </div>
 
         {/* Pinned Communities */}
